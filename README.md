@@ -1,2 +1,2 @@
 # si_transcode
-It let 
+Cett application web est un convertisseur de médias.
