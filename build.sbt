@@ -1,13 +1,15 @@
 name := """si_transcode"""
 
-version := "1.0-SNAPSHOT"
+version := "0.0.1-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
-
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.4"
 
 libraryDependencies ++= Seq(
-  javaJdbc,
-  cache,
-  javaWs
-)
+  jdbc,
+  javaEbean,
+  "org.postgresql" % "postgresql" % "9.4-1202-jdbc4",
+  "org.webjars" % "jquery" % "2.1.1",
+  "org.webjars" % "bootstrap" % "3.3.1"
+)     
+
+lazy val root = (project in file(".")).enablePlugins(PlayJava)
