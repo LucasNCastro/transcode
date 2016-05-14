@@ -1,0 +1,111 @@
+@(title :String = "Page d'accueil")
+@import helper.twitterBootstrap._
+@main(title){
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-lg-">
+                <div class="well well-sm">
+                    <h1 class="text-primary">Convertisseur d'audio et de vidéo en ligne</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend augue arcu, non dictum lacus tempor sit amet. Quisque ac diam dapibus nibh imperdiet dictum. Mauris vel massa at turpis consequat euismod non vitae tortor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi eget pulvinar nisl. Sed hendrerit euismod consectetur. Aenean turpis arcu, aliquam a lorem dignissim, volutpat euismod purus.
+                    </p>
+                    <p>
+                        Etiam convallis nulla ut lectus varius, eu condimentum nunc imperdiet. Sed eu tellus id urna placerat fermentum varius vitae diam. Quisque eget justo vel lacus porttitor sodales auctor non tellus. Nunc vulputate venenatis nunc, at tincidunt lorem. Cras porta mauris vitae elit bibendum gravida. Maecenas blandit ornare volutpat. Aenean in rutrum mi, vel pulvinar urna. Suspendisse aliquet enim condimentum ex efficitur, at pellentesque purus mollis. Curabitur lacus mauris, ornare sit amet suscipit quis, tempus ac sapien.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                @helper.form(action = routes.ConversionController.Convert()) {
+                    <div class="form-group">
+                        <label for="file">Fichier à convertir</label>
+                        <input type="file" class="form-control" id="file"/>
+                    </div>
+
+                    <p class="text-center">
+                        <span class="label label-default">Ou</span>
+                    </p>
+
+                    <div class="form-group">
+                        <label for="url">Lien de fichier à convertir</label>
+                        <input type="url" class="form-control" id="url"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="targetFormat">Convertir en</label>
+                        <select class="form-control">
+                            <option>.mp3</option>
+                            <option>.mp4</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default">Convertir</button>
+                    </div>
+                }
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="text-center text-info">Nos services</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="well">
+                    <p class="lead text-center">Conversion</p>
+                    <p class="text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend augue arcu, non dictum lacus tempor sit amet. Quisque ac diam dapibus nibh imperdiet dictum.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <p class="lead text-center">Stockage</p>
+                    <p class="text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend augue arcu, non dictum lacus tempor sit amet. Quisque ac diam dapibus nibh imperdiet dictum.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <p class="lead text-center">Support</p>
+                    <p class="text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend augue arcu, non dictum lacus tempor sit amet. Quisque ac diam dapibus nibh imperdiet dictum.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 class="text-center text-info">Nos tarifs</h2>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="well">
+                    <p class="lead text-center">Standard</p>
+                    <p class="text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend augue arcu, non dictum lacus tempor sit amet. Quisque ac diam dapibus nibh imperdiet dictum.
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <p class="lead text-center">Premium</p>
+                    <p class="text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend augue arcu, non dictum lacus tempor sit amet. Quisque ac diam dapibus nibh imperdiet dictum.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <p class="lead text-center">Ultime</p>
+                    <p class="text-justify">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut eleifend augue arcu, non dictum lacus tempor sit amet. Quisque ac diam dapibus nibh imperdiet dictum.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
