@@ -11,17 +11,26 @@ import java.util.List;
  * Created by Ramneek on 13/05/2016.
  */
 @Entity
-@Table(name = "user_account")
+@Table(name = "users")
 public class User extends Model {
     private int id;
+    @Constraints.Required
     private String name;
+    @Constraints.Required
+    @Constraints.Email
     private String email;
     private String password;
     private Date lastLogin;
+    private Date createdOn;
+    private float memoryLeft;
     private List<Conversion> conversions;
+    private List<Payment> payments;
+    private AuthProvider authProvider;
+
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name="id_seq", sequenceName="user_id_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "id_seq")
     public int getId() {
         return id;
     }
@@ -30,7 +39,7 @@ public class User extends Model {
         this.id = id;
     }
 
-    @Column(nullable = true)
+    @Column(nullable = false, unique = true)
     public String getName() {
         return name;
     }
@@ -39,7 +48,7 @@ public class User extends Model {
         this.name = name;
     }
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     public String getEmail() {
         return email;
     }
@@ -48,7 +57,7 @@ public class User extends Model {
         this.email = email;
     }
 
-    @Column(nullable = false, length = 1024)
+    @Column(nullable = true, length = 1024)
     public String getPassword() {
         return password;
     }
@@ -57,6 +66,7 @@ public class User extends Model {
         this.password = password;
     }
 
+    @Column(nullable = false, updatable = false)
     public Date getLastLogin() {
         return lastLogin;
     }
@@ -65,12 +75,47 @@ public class User extends Model {
         this.lastLogin = lastLogin;
     }
 
+    @Column(nullable = false, updatable = false)
+    public Date getCreatedOn() {
+        return createdOn;
+    }
+
+    public void setCreatedOn(Date createdOn) {
+        this.createdOn = createdOn;
+    }
+
+    public float getMemoryLeft() {
+        return memoryLeft;
+    }
+
+    public void setMemoryLeft(float memoryLeft) {
+        this.memoryLeft = memoryLeft;
+    }
+
     @OneToMany(targetEntity = Conversion.class, mappedBy = "user")
-    public List<Conversion> getMedias() {
+    public List<Conversion> getConversions() {
         return conversions;
     }
 
-    public void setMedias(List<Conversion> conversions) {
+    public void setConversions(List<Conversion> conversions) {
         this.conversions = conversions;
+    }
+
+    @OneToMany(targetEntity = Payment.class, mappedBy = "user")
+    public List<Payment> getPayments() {
+        return payments;
+    }
+
+    public void setPayments(List<Payment> payments) {
+        this.payments = payments;
+    }
+
+    @ManyToOne(targetEntity = AuthProvider.class)
+    public AuthProvider getAuthProvider() {
+        return authProvider;
+    }
+
+    public void setAuthProvider(AuthProvider authProvider) {
+        this.authProvider = authProvider;
     }
 }
