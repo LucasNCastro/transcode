@@ -1,0 +1,12 @@
+@import forms.ConnectionForm
+@import views.html.helper.twitterBootstrap._
+@(title : String)(connectionForm : Form[ConnectionForm])
+
+@main(title){
+    @helper.form(action = routes.AccountController.authenticate(), 'method -> "POST"){
+        @helper.inputText(connectionForm("username"))
+        @helper.inputText(connectionForm("password"))
+        @helper.checkbox(connectionForm("rememberMe"))
+        <button type="submit">Se connecter</button>
+    }
+}

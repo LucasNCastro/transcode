@@ -2,8 +2,23 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Default path will just redirect to the computer list
+# HomePage
 GET     /                           controllers.HomeController.index()
+
+
+# Account
+
+GET     /login                      controllers.AccountController.login()
+
+POST    /account/authenticate       controllers.AccountController.authenticate()
+
+GET     /account/create             controllers.AccountController.create()
+
+POST    /account/register           controllers.AccountController.register()
+
+GET     /forgotten_pwd              controllers.AccountController.passwordForgotten()
+
+POST    /recover_pwd                controllers.AccountController.recoverPassword()
 
 POST    /Convert                    controllers.ConversionController.Convert()
 

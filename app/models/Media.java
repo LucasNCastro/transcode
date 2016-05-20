@@ -12,16 +12,17 @@ import java.util.List;
  * Created by Ramneek on 13/05/2016.
  */
 @Entity
+@Table(name = "medias")
 public class Media extends Model{
     private int id;
     private String type;
-    private PriceSchema priceSchema;
 
     private List<Conversion> providedMediaConversions;
     private List<Conversion> convertedMediaConversions;
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "media_id_seq", sequenceName = "media_id_seq")
+    @GeneratedValue(generator = "media_id_seq", strategy = GenerationType.SEQUENCE)
     public int getId() {
         return id;
     }
@@ -37,15 +38,6 @@ public class Media extends Model{
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    @ManyToOne(targetEntity = PriceSchema.class)
-    public PriceSchema getPriceSchema() {
-        return priceSchema;
-    }
-
-    public void setPriceSchema(PriceSchema priceSchema) {
-        this.priceSchema = priceSchema;
     }
 
     @OneToMany(targetEntity = Conversion.class, mappedBy = "providedMedia")

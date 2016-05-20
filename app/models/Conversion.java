@@ -10,6 +10,7 @@ import java.util.Date;
  * Created by Ramneek on 13/05/2016.
  */
 @Entity
+@Table(name = "conversions")
 public class Conversion extends Model {
     private int id;
     private Date date;
@@ -20,7 +21,8 @@ public class Conversion extends Model {
     private User user;
 
     @Id
-    @GeneratedValue
+    @SequenceGenerator(name = "conversion_id_seq", sequenceName = "conversion_id_seq")
+    @GeneratedValue(generator = "conversion_id_seq", strategy = GenerationType.SEQUENCE)
     public int getId() {
         return id;
     }
@@ -74,7 +76,7 @@ public class Conversion extends Model {
         this.convertedMedia = convertedMedia;
     }
 
-    @OneToOne(targetEntity = Media.class)
+    @ManyToOne(targetEntity = Media.class)
     public User getUser() {
         return user;
     }
